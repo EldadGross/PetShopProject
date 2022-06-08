@@ -1,0 +1,39 @@
+﻿@model PetShop.Client.AnimalViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Animals Catlog</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Animals!.First().PictureUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Animals!.First().Name)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Animals!)
+        {
+            <tr>
+                <td>
+                    <img src="@item.PictureUrl" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <form asp-action="Details" asp-route-id="@item.AnimalId">
+                        <button type="submit" class="btn btn-primary btn-sm">Get more details</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

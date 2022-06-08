@@ -1,0 +1,47 @@
+﻿@model IEnumerable<PetShop.Data.Model.Animal>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<h1>Pet Shop</h1>
+<a asp-controller="Animals" , asp-action="Index">go to animals catalog</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PictureUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>            
+            <th>
+                @Html.DisplayNameFor(model => model.Descraption)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comments)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src=@item.PictureUrl />
+                </td>
+                <th>
+                    @Html.DisplayFor(modelItem => item.Name);
+                </th>                
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descraption)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comments.Count)
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>

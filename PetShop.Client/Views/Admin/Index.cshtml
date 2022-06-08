@@ -1,0 +1,61 @@
+﻿@model PetShop.Client.AnimalViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Adminstrator page</h1>
+
+<form asp-action="Create">
+<button type="submit" class="btn btn-primary btn-sm">create new animal</button>
+</form>
+
+<table id="tableId" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Animals!.First().PictureUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Animals!.First().Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Animals!.First().BirthDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Animals!.First().Descraption)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Animals!.First().Category)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Animals!)
+        {
+            <tr>
+                <td>
+                    <img src="@item.PictureUrl" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BirthDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descraption)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category!.Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.AnimalId">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.AnimalId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
